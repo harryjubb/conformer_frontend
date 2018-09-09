@@ -18,6 +18,8 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
+    "build_gcp": "PUBLIC_URL='https://storage.googleapis.com/harryjubb/conformer' react-app-rewired build",
+    "deploy_gcp": "gsutil cp -r ./build/* gs://harryjubb/conformer",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   }
