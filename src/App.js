@@ -10,8 +10,7 @@ import NGLComponent from './NGLComponent.js'
 class App extends Component {
   componentDidMount () {
     const webSocket = new WebSocket(
-      'ws://' + '35.242.133.138:8000' +
-      '/ws/conformer/')
+      'ws://35.242.133.138:8000/ws/conformer/')
 
     webSocket.onclose = function (e) {
       console.error('Chat socket closed unexpectedly')
@@ -44,7 +43,7 @@ class App extends Component {
             {
               type: 'react-component',
               component: 'NGLComponent',
-              props: { webSocket },
+              props: {},
               isClosable: false,
               title: '3D Visualisation',
               showPopoutIcon: false,
@@ -66,7 +65,7 @@ class App extends Component {
       webSocket.onmessage = message => {
         const data = JSON.parse(message.data)
         const conformerMolfile = data['conformerMolfile']
-        console.log(conformerMolfile)
+        // console.log(conformerMolfile)
         goldenLayout.eventHub.emit(
           'conformerUpdated',
           {

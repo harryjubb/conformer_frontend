@@ -9,10 +9,6 @@ class NGLComponent extends Component {
     className: PropTypes.string,
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount () {
 		const stage = new NGL.Stage(this.viewport)
     window.stage = stage
@@ -21,7 +17,7 @@ class NGLComponent extends Component {
       stage.handleResize()
 		})
     this.props.glContainer.on('resize', () => {
-      console.log('resize pane')
+      // console.log('resize pane')
       stage.handleResize();
     })
 
@@ -29,9 +25,9 @@ class NGLComponent extends Component {
     this.props.glEventHub.on(
       'conformerUpdated',
       data => {
-        console.log('from glEventHub', data)
+        // console.log('from glEventHub', data)
         const stringBlob = new Blob([data.conformerMolfile], { type: 'text/plain' })
-        console.log(stringBlob)
+        // console.log(stringBlob)
         stage.removeAllComponents()
         stage.loadFile(stringBlob, { ext: 'pdb' }).then(component => {
           component.addRepresentation('hyperball')

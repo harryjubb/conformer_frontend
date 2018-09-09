@@ -8,20 +8,16 @@ class DrawComponent extends Component {
     className: PropTypes.string,
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount () {
     window.chemwriter.System.ready(() => {
       let editor = window.chemwriter.components['editor']
 
       editor.addEventListener('document-edited', () => {
 
-        console.log('Document edited.');
+        // console.log('Document edited.');
 
         const molFile = editor.getMolfile()
-        console.log(molFile)
+        // console.log(molFile)
         
         this.props.webSocket.send(JSON.stringify({
           'molfile': molFile
@@ -30,7 +26,7 @@ class DrawComponent extends Component {
       });
 
       window.addEventListener('resize', () => {
-        console.log('resize window');
+        // console.log('resize window');
         window.chemwriter.refresh()
       })
 
