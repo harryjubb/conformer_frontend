@@ -63,8 +63,8 @@ class App extends Component {
 
       goldenLayout.init()
 
-      webSocket.onmessage = function (e) {
-        const data = JSON.parse(e.data)
+      webSocket.onmessage = message => {
+        const data = JSON.parse(message.data)
         const conformerMolfile = data['conformerMolfile']
         console.log(conformerMolfile)
         goldenLayout.eventHub.emit(
